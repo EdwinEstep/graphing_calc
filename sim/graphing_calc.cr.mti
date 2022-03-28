@@ -1,0 +1,62 @@
+C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package rgb_type
+-- Compiling entity top_graphing_calc
+-- Compiling architecture structural of top_graphing_calc
+-- Loading package NUMERIC_STD
+-- Loading entity UART_RX
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading entity vga
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/rgb_type.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/rgb_type.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package rgb_type
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/dec_to_fixpt.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/dec_to_fixpt.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity dec_to_fixpt
+-- Compiling architecture behavioral of dec_to_fixpt
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity UART_RX
+-- Compiling architecture RTL of UART_RX
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package rgb_type
+-- Compiling entity vga
+-- Compiling architecture behavioral of vga
+-- Loading entity vga_sync
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity vga_sync
+-- Compiling architecture behavioral of vga_sync
+
+} {} {}}
