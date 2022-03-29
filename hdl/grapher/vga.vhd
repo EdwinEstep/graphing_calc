@@ -39,9 +39,9 @@ begin
     begin
         if(clk'event and clk='1') then
             if(srst='1') then
-                
+                pixel <= '0';
             else
-                
+                pixel <= not pixel;
             end if;
         end if;
     end process;
