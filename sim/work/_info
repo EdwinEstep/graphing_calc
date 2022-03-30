@@ -9,25 +9,25 @@ z2
 cModel Technology
 dC:/Windows/system32
 Ecmd_parser
-Z0 w1647975393
+Z0 w1648566019
 Z1 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z2 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
 Z5 dC:/Users/Edwin/Documents/College/cpe426/graphing_calc/sim
-Z6 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/cmd_parser.vhd
-Z7 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/cmd_parser.vhd
+Z6 8C:\Users\Edwin\Documents\College\cpe426\graphing_calc\hdl\input_handler\cmd_parser.vhd
+Z7 FC:\Users\Edwin\Documents\College\cpe426\graphing_calc\hdl\input_handler\cmd_parser.vhd
 l0
 L12
 VT7i<dC>G[W]F3:9O0oLJj2
 !s100 PA[QMDR0NCKFOLX[X7`Az2
 Z8 OV;C;10.5b;63
 33
-Z9 !s110 1647989540
+Z9 !s110 1648566582
 !i10b 1
-Z10 !s108 1647989540.000000
-Z11 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/cmd_parser.vhd|
-Z12 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/cmd_parser.vhd|
+Z10 !s108 1648566582.000000
+Z11 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:\Users\Edwin\Documents\College\cpe426\graphing_calc\hdl\input_handler\cmd_parser.vhd|
+Z12 !s107 C:\Users\Edwin\Documents\College\cpe426\graphing_calc\hdl\input_handler\cmd_parser.vhd|
 !i113 1
 Z13 o-work work -2008 -explicit
 Z14 tExplicit 1 CvgOpt 0
@@ -37,10 +37,10 @@ R2
 R3
 R4
 DEx4 work 10 cmd_parser 0 22 T7i<dC>G[W]F3:9O0oLJj2
-l37
+l39
 L33
-V[R:o>V@dHiP=5O3=`zOW61
-!s100 jCS^HB8Fi0z]9KWKAlhI?0
+VfU?21Q`7cof34^nHZZHO60
+!s100 I0^a:j4d[^SoD;;FWbg;90
 R8
 33
 R9
@@ -154,7 +154,7 @@ R10
 R25
 R14
 Etop_graphing_calc
-Z28 w1647989532
+Z28 w1648566578
 Z29 DPx4 work 8 rgb_type 0 22 ;VcWFAH2[ZVOoDn5n9V8<0
 R3
 R4
@@ -187,8 +187,8 @@ R4
 DEx4 work 17 top_graphing_calc 0 22 L0aGTiYJ?C@Ki04lzMaBQ2
 l76
 L29
-VB;`]3IObRiJ:f@lA^Qh^50
-!s100 6[Ee3nb8Xh1``UQd7m[af3
+V`Qo@1kQ2>7b8n]j_of15N3
+!s100 DiI_dmJ;?W4Dn:?^c?7P23
 R8
 33
 R9
@@ -280,7 +280,7 @@ R45
 R13
 R14
 Evga
-Z46 w1647976181
+Z46 w1648566471
 R29
 R1
 R3
@@ -313,8 +313,8 @@ R2
 R34
 l34
 L23
-VV7onGV3EbV2KIE=;M^7;m0
-!s100 G^zYzYU:mbQHmTaOMc5P<0
+VPBE0?7?NfdQR^OPbY?;JD3
+!s100 AS:`_RREYW@al0V70zm=H2
 R8
 33
 R9
@@ -326,7 +326,7 @@ R50
 R13
 R14
 Evga_sync
-Z52 w1647476317
+Z52 w1648564990
 R1
 R2
 R3

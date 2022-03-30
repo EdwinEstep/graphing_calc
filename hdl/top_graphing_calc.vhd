@@ -10,7 +10,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.rgb_type.all;
+use work.vga_graphing.all;
 
 
 entity top_graphing_calc is
@@ -70,9 +70,21 @@ architecture structural of top_graphing_calc is
             hsync, vsync : out std_logic
         );
     end component;
+
+    component pixel_ram
+        PORT (
+            clock: IN   std_logic;
+            data:  IN   std_logic_vector(9 downto 0);
+            write_address:  IN   integer RANGE 0 to 9;
+            read_address:   IN   integer RANGE 0 to 9;
+            we:    IN   std_logic;
+            q:     OUT  std_logic_vector (31 DOWNTO 0)
+        );
+    end component;
     
 
     for vga0 : vga use entity work.vga(behavioral);
+    for pixel_ram0 : pixel_ram use entity work.pixel_ram(rtl);
 begin   
 
     uart0 : uart_rx 
@@ -80,8 +92,10 @@ begin
         port map (CLOCK_50, UART_IN, rx_valid, rx_byte);
 
     vga0 : vga
-        port map(CLOCK_50, RESET, pixel_ram2_addr, pixel_ram2_dout, color, HSYNC, VSYNC);
+        port map(CLOCK_50, RESET, pixel_ram2_addr, pixel_ram2_dout, VGA_RGB, HSYNC, VSYNC);
 
+    pixel_ram0 : pixel_ram
+        port map(CLOCK_50, r_din, )
 
     
         

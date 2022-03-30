@@ -2,7 +2,7 @@ library ieee;
 use IEEE.std_logic_unsigned.all;
 use ieee.std_logic_1164.all;
 
-use work.rgb_type.all;
+use work.vga_graphing.all;
 
 entity vga is
     port (
@@ -35,16 +35,16 @@ begin
     u1 : vga_sync port map(clk, srst, hsync, vsync);
 
 
-    p1 : process(clk)
-    begin
-        if(clk'event and clk='1') then
-            if(srst='1') then
-                pixel <= '0';
-            else
-                pixel <= not pixel;
-            end if;
-        end if;
-    end process;
+    -- p1 : process(clk)
+    -- begin
+    --     if(clk'event and clk='1') then
+    --         if(srst='1') then
+    --         else
+    --         end if;
+    --     end if;
+    -- end process;
+
+    pixel <= '1';
 
 
     -- assign monochromatic color

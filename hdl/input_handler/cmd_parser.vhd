@@ -34,6 +34,8 @@ architecture behavioral of cmd_parser is
   signal digit_count : integer := 0;
   signal bcd2 : std_logic_vector(7 downto 0);
   signal bcd  : std_logic_vector(3 downto 0);
+
+  signal r_op_start : std_logic;
 begin
   p1 : process(clk)
   begin
@@ -48,16 +50,17 @@ begin
         -- some other character
         else
           opcode <= rx_byte(4 downto 0);
-          op_start <= '1';
+          r_op_start <= '1';
         end if;
       end if;
 
-      if(op_start='1') then
-        op_start <= '0';
+      if(r_op_start='1') then
+        r_op_start <= '0';
       end if;
     end if;
   end process;
 
+  op_start <= r_op_start;
 
   -- offset to get BCD ('.' becomes FE)
   bcd2 <= rx_byte - x"30";
