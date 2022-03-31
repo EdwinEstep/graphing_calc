@@ -23,9 +23,9 @@ VT7i<dC>G[W]F3:9O0oLJj2
 !s100 PA[QMDR0NCKFOLX[X7`Az2
 Z8 OV;C;10.5b;63
 33
-Z9 !s110 1648566582
+Z9 !s110 1648741340
 !i10b 1
-Z10 !s108 1648566582.000000
+Z10 !s108 1648741340.000000
 Z11 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:\Users\Edwin\Documents\College\cpe426\graphing_calc\hdl\input_handler\cmd_parser.vhd|
 Z12 !s107 C:\Users\Edwin\Documents\College\cpe426\graphing_calc\hdl\input_handler\cmd_parser.vhd|
 !i113 1
@@ -132,6 +132,68 @@ R24
 R25
 R14
 w1647475341
+Pinput_modules
+R3
+R4
+w1648735448
+R5
+8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/input_modules.vhd
+FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/input_modules.vhd
+l0
+L6
+V1SFdX<VJRPRk[:MX^Fa2C1
+!s100 XhMjK]>IM@Ek`ThZ^lICA2
+R8
+32
+R9
+!i10b 1
+R10
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/input_modules.vhd|
+!s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/input_modules.vhd|
+!i113 1
+R25
+R14
+Epixel_ram
+Z28 w1648740575
+R16
+R3
+R4
+R5
+Z29 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/pixel_ram.vhd
+Z30 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/pixel_ram.vhd
+l0
+L12
+V:SY1WNXkF0ZMiSf0c<m;L0
+!s100 ^JK:gdM7j:fUf_o>o_b[B0
+R8
+32
+R9
+!i10b 1
+R10
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/pixel_ram.vhd|
+Z32 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/pixel_ram.vhd|
+!i113 1
+R25
+R14
+Artl
+R16
+R3
+R4
+Z33 DEx4 work 9 pixel_ram 0 22 :SY1WNXkF0ZMiSf0c<m;L0
+l27
+L24
+Z34 V2ZoC^dd^^b_UJCNEgZJef3
+Z35 !s100 9Ya4KQeX:0L1E?2:XJAP12
+R8
+32
+R9
+!i10b 1
+R10
+R31
+R32
+!i113 1
+R25
+R14
 Prgb_type
 R3
 R4
@@ -145,67 +207,66 @@ V;VcWFAH2[ZVOoDn5n9V8<0
 !s100 @Ez=Q[Bk?:H7QRQ76=76[2
 R8
 32
-R9
+!s110 1648566582
 !i10b 1
-R10
+!s108 1648566582.000000
 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/rgb_type.vhd|
 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/rgb_type.vhd|
 !i113 1
 R25
 R14
 Etop_graphing_calc
-Z28 w1648566578
-Z29 DPx4 work 8 rgb_type 0 22 ;VcWFAH2[ZVOoDn5n9V8<0
+Z36 w1648740640
+Z37 DPx4 ieee 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
+Z38 DPx4 work 12 vga_graphing 0 22 _UZn?AeGMh3VIcA1Td@_A0
+Z39 DPx4 work 13 input_modules 0 22 1SFdX<VJRPRk[:MX^Fa2C1
 R3
 R4
 R5
-Z30 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd
-Z31 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd
+Z40 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd
+Z41 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd
 l0
-L16
-VL0aGTiYJ?C@Ki04lzMaBQ2
-!s100 ^ohf:91G=QiSY9d_cR<3Y1
+L17
+VaPe2]la7G00m_>d_A<8n=3
+!s100 9<GH6:e73SXhC1QRB6nTk2
 R8
 33
 R9
 !i10b 1
 R10
-Z32 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd|
-Z33 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd|
+Z42 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd|
+Z43 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/top_graphing_calc.vhd|
 !i113 1
 R13
 R14
 Astructural
-R1
-R2
-Z34 DEx4 work 3 vga 0 22 noEKVA:4VW7e8XBbHEjYW2
-R16
-Z35 DEx4 work 7 uart_rx 0 22 <<<zM90a;cV[9dN::l11F1
-R29
+R37
+R38
+R39
 R3
 R4
-DEx4 work 17 top_graphing_calc 0 22 L0aGTiYJ?C@Ki04lzMaBQ2
-l76
-L29
-V`Qo@1kQ2>7b8n]j_of15N3
-!s100 DiI_dmJ;?W4Dn:?^c?7P23
+DEx4 work 17 top_graphing_calc 0 22 aPe2]la7G00m_>d_A<8n=3
+l48
+L30
+VKje;<aL0?9[ChlGj2:6Uc3
+!s100 `2RoIY6bIV9PU1V[iVP`51
 R8
 33
 R9
 !i10b 1
 R10
-R32
-R33
+R42
+R43
 !i113 1
 R13
 R14
 Euart
-Z36 w1647474602
+Z44 w1647474602
 R3
 R4
 R5
-Z37 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart.vhd
-Z38 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart.vhd
+Z45 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart.vhd
+Z46 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart.vhd
 l0
 L10
 VR5D]FY57SRQ?b[4Lbac6^1
@@ -215,8 +276,8 @@ R8
 R26
 !i10b 1
 R27
-Z39 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart.vhd|
-Z40 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart.vhd|
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart.vhd|
+Z48 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart.vhd|
 !i113 1
 R25
 R14
@@ -233,19 +294,19 @@ R8
 R26
 !i10b 1
 R27
-R39
-R40
+R47
+R48
 !i113 1
 R25
 R14
 Euart_rx
-Z41 w1647740622
+Z49 w1647740622
 R16
 R3
 R4
 R5
-Z42 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd
-Z43 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd
+Z50 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd
+Z51 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd
 l0
 L18
 V<<<zM90a;cV[9dN::l11F1
@@ -255,8 +316,8 @@ R8
 R9
 !i10b 1
 R10
-Z44 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd|
-Z45 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd|
+Z52 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd|
+Z53 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd|
 !i113 1
 R13
 R14
@@ -264,7 +325,7 @@ Artl
 R16
 R3
 R4
-R35
+DEx4 work 7 uart_rx 0 22 <<<zM90a;cV[9dN::l11F1
 l49
 L35
 V]Q`=]WVeIY8?gA7[CD=S:3
@@ -274,77 +335,101 @@ R8
 R9
 !i10b 1
 R10
-R44
-R45
+R52
+R53
 !i113 1
 R13
 R14
 Evga
-Z46 w1648566471
-R29
+Z54 w1648741334
+R37
+R38
 R1
 R3
 R4
 R2
 R5
-Z47 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd
-Z48 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd
+Z55 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd
+Z56 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd
 l0
 L7
-VnoEKVA:4VW7e8XBbHEjYW2
-!s100 GR:FloBEF]VLi4kHJYjE@2
+V@<O7ZD1A9RYU9BCAon8Q23
+!s100 iL:SNbh2dLGSaV]=dcAD22
 R8
 33
 R9
 !i10b 1
 R10
-Z49 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd|
-Z50 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd|
+Z57 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd|
+Z58 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd|
 !i113 1
 R13
 R14
 Abehavioral
-Z51 DEx4 work 8 vga_sync 0 22 LnD>EPU=QX1dl8=h=JOm81
-R29
+Z59 DEx4 work 8 vga_sync 0 22 =8_Yj6O:QS4bc6cie?1US0
+R37
+R38
 R1
 R3
 R4
 R2
-R34
-l34
+DEx4 work 3 vga 0 22 @<O7ZD1A9RYU9BCAon8Q23
+l42
 L23
-VPBE0?7?NfdQR^OPbY?;JD3
-!s100 AS:`_RREYW@al0V70zm=H2
+V=ERK2^P^0LYJmzAHA0MUW3
+!s100 E9=NS_QCcd?fH^DU>:Mdg3
 R8
 33
 R9
 !i10b 1
 R10
-R49
-R50
+R57
+R58
 !i113 1
 R13
 R14
+Pvga_graphing
+R37
+R3
+R4
+w1648740613
+R5
+8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_graphing.vhd
+FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_graphing.vhd
+l0
+L7
+V_UZn?AeGMh3VIcA1Td@_A0
+!s100 1R`KGCBX8gQ>P>E^YKFzT2
+R8
+32
+R9
+!i10b 1
+R10
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_graphing.vhd|
+!s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_graphing.vhd|
+!i113 1
+R25
+R14
 Evga_sync
-Z52 w1648564990
+Z60 w1648738827
 R1
 R2
 R3
 R4
 R5
-Z53 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd
-Z54 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd
+Z61 8C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd
+Z62 FC:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd
 l0
-L8
-VLnD>EPU=QX1dl8=h=JOm81
-!s100 ;Mc6D4]hSh5;O]IQm7X?Z1
+L10
+V=8_Yj6O:QS4bc6cie?1US0
+!s100 4nTXSNXCg2QX?F7n64lz>0
 R8
 33
 R9
 !i10b 1
 R10
-Z55 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd|
-Z56 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd|
+Z63 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd|
+Z64 !s107 C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd|
 !i113 1
 R13
 R14
@@ -353,18 +438,18 @@ R1
 R2
 R3
 R4
-R51
-l19
-L17
-VTl7?H<YfBZROnHHnG^@bR0
-!s100 ;6Dc6kBOIfoIJd3d<Sdc53
+R59
+l21
+L19
+Va`FiBlefICblijZ^0XVPm0
+!s100 klhjD<U:ba3Rh6^Qi]gaR2
 R8
 33
 R9
 !i10b 1
 R10
-R55
-R56
+R63
+R64
 !i113 1
 R13
 R14

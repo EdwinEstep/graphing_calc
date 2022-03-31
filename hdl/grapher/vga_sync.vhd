@@ -5,6 +5,8 @@ use IEEE.std_logic_unsigned.all;
 
 -- assumes an input clock of 25Mhz
 -- as well as a resolution of 640x480
+-- Horizontal:  frontporch=18, backporch=50
+-- Vertical:    frontporch=10, backporch=33
 entity vga_sync is
     port (
         clk, srst : in std_logic;
@@ -41,6 +43,6 @@ architecture behavioral of vga_sync is
     end process;
 
     --pulse is only high when pixels are in range
-    hsync <= '1' when hcount < X"280" else '0';     -- d640
-    vsync <= '1' when vcount < X"1E0" else '0';     -- d480
+    hsync <= '1' when hcount < X"2C4" else '0';     -- d708 (accounts for porches)
+    vsync <= '1' when vcount < X"20B" else '0';     -- d523 (accounts for porches)
 end behavioral;

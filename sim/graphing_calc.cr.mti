@@ -1,4 +1,11 @@
-C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/cmd_parser.vhd {1 {vcom -work work -2008 -explicit -stats=none {C:\Users\Edwin\Documents\College\cpe426\graphing_calc\hdl\input_handler\cmd_parser.vhd}
+C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/input_modules.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/input_modules.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package input_modules
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/cmd_parser.vhd {1 {vcom -work work -2008 -explicit -stats=none {C:\Users\Edwin\Documents\College\cpe426\graphing_calc\hdl\input_handler\cmd_parser.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -16,6 +23,23 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package NUMERIC_STD
 -- Compiling entity dec_to_fixpt
 -- Compiling architecture behavioral of dec_to_fixpt
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/pixel_ram.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/pixel_ram.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity pixel_ram
+-- Compiling architecture rtl of pixel_ram
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_graphing.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_graphing.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling package vga_graphing
 
 } {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/input_handler/uart_rx.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
