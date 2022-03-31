@@ -72,7 +72,6 @@ set_location_assignment PIN_T1 -to VGA_RGB[2][1]
 set_location_assignment PIN_P4 -to VGA_RGB[2][2]
 set_location_assignment PIN_N2 -to VGA_RGB[2][3]
 set_global_assignment -name VHDL_FILE ../hdl/input_handler/input_modules.vhd
-set_global_assignment -name VHDL_FILE ../hdl/grapher/rgb_type.vhd
 set_global_assignment -name VHDL_FILE ../hdl/grapher/vga.vhd
 set_global_assignment -name VHDL_FILE ../hdl/input_handler/uart_rx.vhd
 set_global_assignment -name VHDL_FILE ../hdl/input_handler/dec_to_fixpt.vhd
@@ -82,4 +81,5 @@ set_global_assignment -name VHDL_FILE ../hdl/top_graphing_calc.vhd
 set_global_assignment -name SOURCE_FILE db/graphing_calc.cmp.rdb
 set_global_assignment -name VHDL_FILE ../hdl/grapher/vga_graphing.vhd
 set_global_assignment -name VHDL_FILE ../hdl/grapher/pixel_ram.vhd
+set_global_assignment -name QIP_FILE pll_25M.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
