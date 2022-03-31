@@ -22,7 +22,7 @@ END pixel_ram;
 
 
 ARCHITECTURE rtl OF pixel_ram IS
-   TYPE mem IS ARRAY(0 TO 18) OF std_logic;
+   TYPE mem IS ARRAY(0 TO 524287) OF std_logic;
    SIGNAL ram_block : mem;
 BEGIN
    PROCESS (clock)

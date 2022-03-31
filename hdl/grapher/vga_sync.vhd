@@ -10,14 +10,14 @@ use IEEE.std_logic_unsigned.all;
 entity vga_sync is
     port (
         clk, srst : in std_logic;
-        hsync, vsync : out std_logic
+        hsync, vsync : out std_logic;
+        hcount, vcount : inout std_logic_vector(9 downto 0)
     );
 end vga_sync;
 
 
 -- added generic for pulse length
 architecture behavioral of vga_sync is
-        signal hcount, vcount : std_logic_vector(9 downto 0);
     begin
     p : process(clk)
         begin
