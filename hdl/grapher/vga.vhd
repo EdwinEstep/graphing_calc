@@ -67,7 +67,7 @@ begin
                         end if;
                     when H_PORCH_B =>
                         if(hcnt="0") then
-                            if(vsync='0') then
+                            if(vsync2='0') then
                                 state <= V_PORCH_F;
                             else
                                 state <= H_PORCH_F;

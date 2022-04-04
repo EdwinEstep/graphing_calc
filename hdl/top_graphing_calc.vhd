@@ -66,7 +66,7 @@ architecture structural of top_graphing_calc is
 begin   
 
     uart0 : uart_rx
-        generic map (434)   -- assumes a 50Mhz input clk
+        generic map (217)   -- clks per bit for 25Mhz @ 115200baud
         port map (CLOCK_25, UART_IN, rx_valid, rx_byte);
 
 
@@ -82,20 +82,20 @@ begin
         port map(CLOCK_25, arst, p_rdaddr, p_dout, VGA_RGB, HSYNC, VSYNC);
 
     
-    process(CLOCK_25) begin
-        if(CLOCK_50'event and CLOCK_50='1') then
-            if(arst='1') then
-                p_wraddr <= X"0000"&"000";
-            else
-                p_wraddr <= p_wraddr + "1";
-                if(p_rdaddr(0)='1')then
-                p_din <= p_wraddr(4);
-                else
-                    p_din <= '0';
-                end if;
-            end if;
-        end if;
-    end process;
+    -- process(CLOCK_25) begin
+    --     if(CLOCK_50'event and CLOCK_50='1') then
+    --         if(arst='1') then
+    --             p_wraddr <= X"0000"&"000";
+    --         else
+    --             p_wraddr <= p_wraddr + "1";
+    --             if(p_rdaddr(0)='1')then
+    --             p_din <= p_wraddr(4);
+    --             else
+    --                 p_din <= '0';
+    --             end if;
+    --         end if;
+    --     end if;
+    -- end process;
 
     p_we <= '1';
     arst <= not RESET;
