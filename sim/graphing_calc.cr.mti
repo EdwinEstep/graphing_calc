@@ -83,6 +83,19 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity pll_25M
 -- Compiling architecture SYN of pll_25m
 
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package MATH_REAL
+-- Loading package vga_graphing
+-- Compiling entity vga
+-- Compiling architecture behavioral of vga
+-- Loading entity vga_sync
+
 } {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
