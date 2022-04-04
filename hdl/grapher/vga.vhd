@@ -21,76 +21,75 @@ end vga;
 
 -- added generic for pulse length
 architecture behavioral of vga is
-    type state_type is (FRONT_PORCH_H, GRAPHING, IDLE);
+    type state_type is (V_PORCH_F, V_PORCH_B, H_PORCH_F, H_PORCH_B, GRAPHING);
     signal state : state_type;
 
-    signal hsync2, vsync2, hsync_prev : std_logic;
+    signal hsync2, vsync2 : std_logic;
 
     signal pixel : std_logic;
     signal vcnt : std_logic_vector(8 downto 0);
     signal hcnt : std_logic_vector(9 downto 0);
-    signal porch_cnt : std_logic_vector(4 downto 0);
 
+    signal pattern : std_logic;
     
     component vga_sync
         port(
             clk, srst : in std_logic;
             hsync, vsync : out std_logic;
-            hcount, vcount : inout std_logic_vector(9 downto 0)
+            hcount : inout std_logic_vector(9 downto 0);
+            vcount : inout std_logic_vector(8 downto 0)
         );
     end component;
 
     for u1 : vga_sync use entity work.vga_sync(behavioral);
 begin
-    u1 : vga_sync port map(clk, srst, hsync2, vsync2);
+    u1 : vga_sync port map(clk, srst, hsync2, vsync2, hcnt, vcnt);
 
 
     assign_state : process(clk)
     begin
         if(clk'event and clk='1') then
             if(srst='1') then
-                state <= IDLE;
-                hcnt <= x"00"&"00";
-                vcnt <= X"00"&"0";
+                state <= V_PORCH_F;
             else
                 case state is
-                    when FRONT_PORCH_H=>
-                        if(porch_cnt >= "01110") then
+                    when V_PORCH_F =>
+                        if(vcnt > "01001") then -- 10 front porch lines
+                            state <= H_PORCH_F;
+                        end if;
+                    when H_PORCH_F =>
+                        if(hcnt > "10000") then -- 18 front porch pixels
                             state <= GRAPHING;
                         end if;
-
-                        porch_cnt <= porch_cnt + "1";
-                    when GRAPHING=>
-                        if(hcnt > X"27E") then
-                            hcnt <= x"00"&"00";
-                            state <= IDLE;
-                            if(vcnt > X"20C") then
-                                vcnt <= X"00"&"0";
+                    when GRAPHING  =>
+                        if(hcnt > X"290") then  -- 640 horizontal pixels
+                            state <= H_PORCH_B;
+                        end if;
+                    when H_PORCH_B =>
+                        if(hcnt="0") then
+                            if(vsync='0') then
+                                state <= V_PORCH_F;
                             else
-                                vcnt <= vcnt + "1";
+                                state <= H_PORCH_F;
                             end if;
-                        else
-                            hcnt <= hcnt + "1";
                         end if;
-                    when IDLE=>
-                        if(hsync2 = '1' and hsync_prev = '0') then -- detect rising edge of hsync
-                            state <= FRONT_PORCH_H;
-                            porch_cnt <= "00000";
-                        end if;
-                    when OTHERS=>
-                        state <= IDLE;
+                    when V_PORCH_B =>
+                        
                 end case;
-
-                hsync_prev <= hsync2;
             end if;
         end if;
     end process;
+
 
     vsync <= vsync2;
     hsync <= hsync2;
 
     r_adr <= vcnt & hcnt;
-    pixel <= r_din when (hsync2='1' and hcnt < X"280") and (vsync2='1' and vcnt < X"1E0")
+    pixel <= pattern when state=GRAPHING
+        else '0';
+
+    -- assign a VGA test pattern
+    pattern <= '1' when (hcnt > (vcnt-"10") and hcnt < (vcnt+"10"))
         else '0';
 
     -- assign monochromatic color
