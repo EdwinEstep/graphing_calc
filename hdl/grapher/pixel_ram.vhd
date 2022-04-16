@@ -13,8 +13,8 @@ ENTITY pixel_ram IS
    PORT (
       clock: IN   std_logic;
       data:  IN   std_logic;
-      write_address:  IN   std_logic_vector(18 downto 0);
-      read_address:   IN   std_logic_vector(18 downto 0);
+      write_address:  IN   std_logic_vector(19 downto 0);
+      read_address:   IN   std_logic_vector(19 downto 0);
       we:    IN   std_logic;
       q:     OUT  std_logic
    );
@@ -22,7 +22,7 @@ END pixel_ram;
 
 
 ARCHITECTURE rtl OF pixel_ram IS
-   TYPE mem IS ARRAY(0 TO 524287) OF std_logic;
+   TYPE mem IS ARRAY(0 TO 1048575) OF std_logic;
    SIGNAL ram_block : mem;
 BEGIN
    PROCESS (clock)

@@ -20,8 +20,8 @@ architecture tb of vga_tb is
 
     signal p_din : std_logic := '1';
     signal p_dout : std_logic;
-    signal p_wraddr : std_logic_vector(18 downto 0) := X"0000"&"000";
-    signal p_rdaddr : std_logic_vector(18 downto 0);
+    signal p_wraddr : std_logic_vector(19 downto 0) := X"00000";
+    signal p_rdaddr : std_logic_vector(19 downto 0);
     signal p_we : std_logic;
 
     signal color : rgb;

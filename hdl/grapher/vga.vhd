@@ -10,7 +10,7 @@ entity vga is
         srst : in std_logic;
 
         -- ram signals for pixel buffer
-        r_adr : inout std_logic_vector(18 downto 0); -- 10b for H, 9b for V
+        r_adr : inout std_logic_vector(19 downto 0); -- 10b for H, 9b for V
         r_din : in std_logic;
 
         color : out rgb;
@@ -27,7 +27,7 @@ architecture behavioral of vga is
     signal hsync2, vsync2 : std_logic;
 
     signal pixel : std_logic;
-    signal vcnt : std_logic_vector(8 downto 0);
+    signal vcnt : std_logic_vector(9 downto 0);
     signal hcnt : std_logic_vector(9 downto 0);
 
     signal pattern : std_logic;
@@ -37,7 +37,7 @@ architecture behavioral of vga is
             clk, srst : in std_logic;
             hsync, vsync : out std_logic;
             hcount : inout std_logic_vector(9 downto 0);
-            vcount : inout std_logic_vector(8 downto 0)
+            vcount : inout std_logic_vector(9 downto 0)
         );
     end component;
 
@@ -58,11 +58,11 @@ begin
                             state <= H_PORCH_F;
                         end if;
                     when H_PORCH_F =>
-                        if(hcnt > "10000") then -- 18 front porch pixels
+                        if(hcnt > "100110") then -- 31 front porch pixels
                             state <= GRAPHING;
                         end if;
                     when GRAPHING  =>
-                        if(hcnt > X"290") then  -- 640 horizontal pixels
+                        if(hcnt > X"2B0") then  -- 640 horizontal pixels
                             state <= H_PORCH_B;
                         end if;
                     when H_PORCH_B =>
@@ -85,12 +85,9 @@ begin
     hsync <= hsync2;
 
     r_adr <= vcnt & hcnt;
-    pixel <= pattern when state=GRAPHING
+    pixel <= r_din when state=GRAPHING
         else '0';
 
-    -- assign a VGA test pattern
-    pattern <= '1' when (hcnt > (vcnt-"10") and hcnt < (vcnt+"10"))
-        else '0';
 
     -- assign monochromatic color
     with pixel select color <=
