@@ -22,8 +22,8 @@ package vga_graphing is
         PORT (
             clock: IN   std_logic;
             data:  IN   std_logic;
-            write_address:  IN   std_logic_vector(18 downto 0);
-            read_address:   IN   std_logic_vector(18 downto 0);
+            write_address:  IN   std_logic_vector(19 downto 0);
+            read_address:   IN   std_logic_vector(19 downto 0);
             we:    IN   std_logic;
             q:     OUT  std_logic
         );
@@ -36,7 +36,7 @@ package vga_graphing is
             srst : in std_logic;
     
             -- ram signals for pixel buffer
-            r_adr : inout std_logic_vector(18 downto 0); -- 10b for H, 10b for V
+            r_adr : inout std_logic_vector(19 downto 0); -- 10b for H, 10b for V
             r_din : in std_logic;
     
             color : out rgb;
