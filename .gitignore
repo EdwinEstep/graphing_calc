@@ -70,6 +70,10 @@ _output_files/
 PLLJ_PLLSPE_INFO.txt
 
 # Modelsim stuff
+
+# local compile testing modelsim dir
+sim/
+
 # ignore ModelSim generated files and directories (temp files and so on)
 [_@]*
 

@@ -8,6 +8,8 @@ library ieee;
 use ieee.std_logic_1164.ALL;
 use IEEE.std_logic_unsigned.all;
 
+use work.input_modules.shift_reg;
+use work.sreg_types.all;        -- shift reg output
 
 entity cmd_parser is
     generic (
@@ -35,7 +37,19 @@ end cmd_parser;
 architecture behavioral of cmd_parser is
   signal bcd2 : std_logic_vector(7 downto 0);
   signal bcd  : std_logic_vector(3 downto 0);
+
+  signal num_reg_rdy : std_logic;
+  signal num_reg_ctrl : std_logic_vector(1 downto 0);
+  signal num_reg_in : std_logic_vector(3 downto 0);
+  signal num_reg_out : vec_array(0 to 9)(3 downto 0);
 begin
+
+  num_reg : shift_reg
+    generic map (4, 10) -- 4bit entries, x10
+    port map(clk, srst, num_reg_ctrl, num_reg_in, num_reg_rdy, num_reg_out);
+
+
+
   p1 : process(clk)
   begin
     if(clk'event and clk='1') then  

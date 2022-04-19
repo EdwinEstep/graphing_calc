@@ -19,8 +19,8 @@ entity shift_reg is
     generic (
       WIDTH : integer := 10;
       LENGTH : integer := 10
-  );
-  port (
+    );
+    port (
         clk      : in std_logic;
         srst     : in std_logic;
         ctrl    : in std_logic_vector(1 downto 0);
