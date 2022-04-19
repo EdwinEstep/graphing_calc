@@ -47,8 +47,11 @@ begin
                 state <= RESET;
                 i_cntr <= 0;
             else
+                report "srst='0'";
                 if(state=RESET) then
                     -- increment cntr through range, resetting each element
+                    report "ahhh, hell nah" severity warning;
+
                     if(i_cntr > LENGTH-1) then
                         state <= READY;
                         i_cntr <= 0;
@@ -66,13 +69,11 @@ begin
                                 i_reg(i) <= i_reg(i-1);
                             end loop;
                             i_reg(0) <= shift_in;
-                            i_cntr <= i_cntr + 1;
                         when "10" => -- SHIFT BACK BY 1
                             for i in LENGTH-2 downto 0 loop
                                 i_reg(i) <= i_reg(i-1);
                             end loop;
                             i_reg(LENGTH-1) <= (others => '0');
-                            i_cntr <= i_cntr - 1;
                         when others =>
                             i_reg <= i_reg;
                     end case;
