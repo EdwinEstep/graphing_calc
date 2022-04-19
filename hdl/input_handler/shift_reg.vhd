@@ -35,36 +35,55 @@ end shift_reg;
 
 architecture behavioral of shift_reg is
     signal i_reg : vec_array(0 to LENGTH-1)(WIDTH-1 downto 0);
-    signal i_cntr : integer range 0 to LENGTH-1;
+    signal i_cntr : integer range 0 to LENGTH;
+
+    type state_type is (RESET, READY);
+    signal state : state_type;
 begin
     p1 : process(clk)
     begin
         if(clk'event and clk='1') then 
-            if(srst='1') then 
-                -- LE RESET
+            if(srst='1') then -- srst must be deasserted to complete reset
+                state <= RESET;
                 i_cntr <= 0;
             else
-                case ctrl is
-                    when "00" => -- CLEAR
+                if(state=RESET) then
+                    -- increment cntr through range, resetting each element
+                    if(i_cntr > LENGTH-1) then
+                        state <= READY;
                         i_cntr <= 0;
-                    when "01" => -- SHIFT IN
-                        for i in 1 to LENGTH-1 loop
-                            i_reg(i) <= i_reg(i-1);
-                        end loop;
-                        i_reg(0) <= shift_in;
+                    else
+                        i_reg(i_cntr) <= (others => '0');
                         i_cntr <= i_cntr + 1;
-                    when "10" => -- SHIFT BACK BY 1
-                        for i in LENGTH-2 downto 0 loop
-                            i_reg(i) <= i_reg(i-1);
-                        end loop;
-                        i_reg(LENGTH-1) <= (others => '0');
-                        i_cntr <= i_cntr - 1;
-                    when others =>
-                        i_reg <= i_reg;
-                end case;
+                    end if;
+                elsif(state=READY) then
+                    case ctrl is
+                        when "00" => -- CLEAR
+                            i_cntr <= 0;
+                            state <= RESET;
+                        when "01" => -- SHIFT IN
+                            for i in 1 to LENGTH-1 loop
+                                i_reg(i) <= i_reg(i-1);
+                            end loop;
+                            i_reg(0) <= shift_in;
+                            i_cntr <= i_cntr + 1;
+                        when "10" => -- SHIFT BACK BY 1
+                            for i in LENGTH-2 downto 0 loop
+                                i_reg(i) <= i_reg(i-1);
+                            end loop;
+                            i_reg(LENGTH-1) <= (others => '0');
+                            i_cntr <= i_cntr - 1;
+                        when others =>
+                            i_reg <= i_reg;
+                    end case;
+                else
+                    state <= RESET; -- reset if unknown state encountered
+                    i_cntr <= 0;
+                end if;
             end if;
         end if;
     end process;
 
     q_out <= i_reg;
+    rdy <= '1' when state=READY else '0';
 end behavioral;
