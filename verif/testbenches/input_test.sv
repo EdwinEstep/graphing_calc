@@ -1,8 +1,8 @@
-module input_test();
+module input_test;
     logic clk;
 
-    always(@posedge clk)
-        #10 clock <= ~clk;
+    always@(posedge clk)
+        #10 clk <= ~clk;
 
 
 

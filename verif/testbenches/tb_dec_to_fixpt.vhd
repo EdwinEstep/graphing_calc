@@ -17,7 +17,7 @@ architecture tb of tb_dec_to_fixpt is
 
     -- port signals for parser
     signal start   : std_logic := '0';
-    signal done    : std_logic;
+    signal done, fail, rdy    : std_logic;
 
     signal bcd_in  : std_logic_vector(27 downto 0);
     signal bin_out : std_logic_vector(17 downto 0);
@@ -26,21 +26,47 @@ begin
         clk <= not clk after 10 ns; 
     end process;
 
-    -- initial updates
+    
+    -- test stimulation
     process begin
+        -- 
         rst <= '0' after 30 ns;
+        wait on rst;
 
-        -- send byte
-        start <= '1' after 40 ns;
+
+        -- === TEST GOOD INPUT DATA ===
+        start <= '1' after 20 ns;
         bcd_in <= x"0123456";
+
+        wait on start;
+        start <= '0' after 20 ns;
+
+        wait until rdy='1';
+
+
+
+        -- === TEST OVERFLOW ===
+        start <= '1' after 20 ns;
+        bcd_in <= x"9999999";
+
+        wait on start;
+        start <= '0' after 20 ns;
+
+        wait until rdy='1';
+
+
+
+        -- === TEST NON-BCD INPUT ===
+        start <= '1' after 40 ns;
+        bcd_in <= x"000000A";
+
+        wait on start;
+        start <= '0' after 20 ns;
+
+        wait until rdy='1';
     end process;
 
-    process(clk) begin
-        if(clk'event and clk='1') then
-            
-        end if;
-    end process;
 
     UUT : dec_to_fixpt
-        port map(clk, rst, start, done, bcd_in, bin_out);
+        port map(clk, rst, start, done, rdy, fail, bcd_in, bin_out);
 end tb;

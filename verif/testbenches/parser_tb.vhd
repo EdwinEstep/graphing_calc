@@ -18,7 +18,7 @@ architecture tb of parser_tb is
     -- port signals for parser
     signal rx_dv : std_logic := '0';
     signal rx_byte : std_logic_vector(7 downto 0);
-    signal dec_out : std_logic_vector(27 downto 0);
+    signal data : std_logic_vector(17 downto 0);
 
     signal opcode  : std_logic_vector( 4 downto 0);
     signal opstart :  std_logic;    
@@ -43,5 +43,5 @@ begin
     end process;
 
     UUT : cmd_parser
-        port map(clk, rst, rx_dv, rx_byte, dec_out, opcode, opstart);
+        port map(clk, rst, rx_dv, rx_byte, data, opcode, opstart);
 end tb;

@@ -14,6 +14,7 @@ use IEEE.std_logic_unsigned.all;
 
 
 use work.input_modules.all;
+use work.alu_modules.all;
 use work.vga_graphing.all;
 
 
@@ -53,35 +54,16 @@ architecture structural of top_graphing_calc is
     signal rx_valid : std_logic;
     signal rx_byte  : std_logic_vector(7 downto 0);
 
+    signal input_data : std_logic_vector(17 downto 0);
+    signal opcode : std_logic_vector(4 downto 0);
+    signal opstart : std_logic;
+
 
 
     -- ARITHMETIC
-    signal push, pop, full : std_logic;
-    signal s_wr_adr, s_rd_adr : std_logic_vector(2 downto 0) := "000";
-    signal s_din, s_dout : std_logic_vector(17 downto 0);
-
-
-    component stack
-        generic (
-            WIDTH : integer; -- element bit width
-            DEPTH : integer; -- number of stack levels
-            LENGTH: integer  -- 
-          );
-          port (
-              clk     : in std_logic;
-              srst    : in std_logic;
-              
-              push    : in std_logic;
-              pop     : in std_logic;
-              full    : out std_logic;
-    
-              wr_adr  : in std_logic_vector(integer(ceil(log2(real(LENGTH))))-1 downto 0);
-              rd_adr  : in std_logic_vector(integer(ceil(log2(real(LENGTH))))-1 downto 0);
-              din     : in std_logic_vector(WIDTH-1 downto 0);
-              dout    : out std_logic_vector(WIDTH-1 downto 0)  -- data at top of stack
-          );
-    end component;
-
+    signal buf_wr_adr, buf_rd_adr : std_logic_vector(9 downto 0) := "0000000000";
+    signal buf_din, buf_dout : std_logic_vector(17 downto 0);
+    signal buf_we : std_logic;
 
 
     -- GRAPHING
@@ -98,14 +80,24 @@ begin
         generic map (217)   -- clks per bit for 25Mhz @ 115200baud
         port map (CLOCK_25, UART_IN, rx_valid, rx_byte);
 
+    cmd_parser0 : cmd_parser
+        port map (CLOCK_25, arst, rx_valid, rx_byte, input_data, opcode, opstart);
+        
+        
+        
+        
+        
 
 
     -- ARITHMETIC
-    data_stack : stack
-        generic map(18, 16, 8)
-        port map(CLOCK_25, arst, push, pop, full, s_wr_adr, s_rd_adr, s_din, s_dout);
+    alu0 : alu
+        port map(CLOCK_25, arst, input_data, opcode, opstart, buf_wr_adr, buf_din, buf_we);
 
 
+    output_buffer : ram_infer
+        generic map(18, 640)
+        port map(CLOCK_25, buf_din, buf_wr_adr, buf_rd_adr, buf_we, buf_dout);
+            
 
     -- GRAPHING
     pll0 : pll_25M
