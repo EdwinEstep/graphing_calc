@@ -17,26 +17,31 @@ package input_modules is
     end component;
 
 
-    component cmd_parser
-        generic (
-            BUFSIZE : integer := 10
+    component dec_to_fixpt
+        port (
+            clk     : in std_logic;
+            srst    : in std_logic;
+            start   : in std_logic;
+            done    : out std_logic;
+    
+            bcd_in  : in std_logic_vector(27 downto 0);
+            bin_out : out std_logic_vector(17 downto 0)
         );
+        end component;
+
+
+    component cmd_parser
         port (
             clk           : in std_logic;
             srst          : in std_logic;
             
             rx_dv         : in std_logic; -- uart data valid
             rx_byte       : in std_logic_vector(7 downto 0); -- uart byte
-        
-            dec_out       : out std_logic_vector(BUFSIZE*4-1 downto 0); -- 10 BCD digits (radix represented as 0b1010)
-        
-            stack_wr_data : out std_logic_vector(BUFSIZE*4-1 downto 0);
-            stack_wr_en   : out std_logic;
-        
-            -- initiate operation
+      
+            dec_out       : out std_logic_vector(7*4-1 downto 0); -- 10 BCD digits (radix represented as 0b1010)
             opcode        : out std_logic_vector(4 downto 0);
-            op_start      : out std_logic
-            );
+            opstart       : out std_logic
+          );
     end component;
     
 end package input_modules;

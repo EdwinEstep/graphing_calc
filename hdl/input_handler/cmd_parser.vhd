@@ -11,9 +11,6 @@ use IEEE.std_logic_unsigned.all;
 use work.sreg_types.all;        -- shift reg output
 
 entity cmd_parser is
-    generic (
-      BUFSIZE : integer := 10
-  );
   port (
       clk           : in std_logic;
       srst          : in std_logic;
@@ -22,7 +19,8 @@ entity cmd_parser is
       rx_byte       : in std_logic_vector(7 downto 0); -- uart byte
 
       dec_out       : out std_logic_vector(7*4-1 downto 0); -- 10 BCD digits (radix represented as 0b1010)
-      opcode        : out std_logic_vector(4 downto 0)
+      opcode        : out std_logic_vector(4 downto 0);
+      opstart       : out std_logic
     );
 end cmd_parser;
 
