@@ -6,7 +6,7 @@ use ieee.std_logic_1164.all;
 
 package sreg_types is
     -- declare index range and width later
-    type vec_array is array(natural range <>) of std_logic_vector;
+    type array_2d is array(natural range <>, natural range <>) of std_logic;
 end package sreg_types;
 
 
@@ -28,13 +28,13 @@ entity shift_reg is
         shift_in : in std_logic_vector(WIDTH-1 downto 0);
 
         rdy      : out std_logic;
-        q_out    : out vec_array(0 to LENGTH-1)(WIDTH-1 downto 0)
+        q_out    : out array_2d(0 to LENGTH-1, WIDTH-1 downto 0)
     );
 end shift_reg;
 
 
 architecture behavioral of shift_reg is
-    signal i_reg : vec_array(0 to LENGTH-1)(WIDTH-1 downto 0);
+    signal i_reg : array_2d(0 to LENGTH-1, WIDTH-1 downto 0);
     signal i_cntr : integer range 0 to LENGTH;
 
     type state_type is (RESET, READY);
@@ -56,24 +56,40 @@ begin
                         state <= READY;
                         i_cntr <= 0;
                     else
-                        i_reg(i_cntr) <= (others => '0');
+                        for k in 0 to WIDTH-1 loop
+                            i_reg(i_cntr, k) <= '0';
+                        end loop; -- dumb loop 1
                         i_cntr <= i_cntr + 1;
                     end if;
                 elsif(state=READY) then
                     case ctrl is
-                        when "00" => -- CLEAR
+                        when "00" => -- CLEAR   
                             i_cntr <= 0;
                             state <= RESET;
                         when "01" => -- SHIFT IN
                             for i in 1 to LENGTH-1 loop
-                                i_reg(i) <= i_reg(i-1);
+                                for k in 0 to WIDTH-1 loop
+                                    i_reg(i, k) <= i_reg(i-1, k);
+                                end loop; -- dumb loop 2
                             end loop;
-                            i_reg(0) <= shift_in;
+
+                            -- i_reg(0) <= shift_in;
+                            for k in 0 to WIDTH-1 loop
+                                i_reg(0, k) <= shift_in(k);
+                            end loop; -- dumb loop 3
                         when "10" => -- SHIFT BACK BY 1
                             for i in LENGTH-2 downto 0 loop
-                                i_reg(i) <= i_reg(i-1);
+
+                                -- i_reg(i) <= i_reg(i-1);
+                                for k in 0 to WIDTH-1 loop
+                                    i_reg(i, k) <= i_reg(i-1, k);
+                                end loop; -- dumb loop 3
                             end loop;
-                            i_reg(LENGTH-1) <= (others => '0');
+
+                            -- i_reg(LENGTH-1) <= (others => '0');
+                            for k in 0 to WIDTH-1 loop
+                                i_reg(LENGTH-1, k) <= '0';
+                            end loop; -- dumb loop 3
                         when others =>
                             i_reg <= i_reg;
                     end case;

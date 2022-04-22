@@ -9,6 +9,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.math_real.all; -- for ceil, log2, real
 use IEEE.std_logic_unsigned.all;
 
 
@@ -30,32 +31,60 @@ end top_graphing_calc;
 
 
 architecture structural of top_graphing_calc is
-    signal arst : std_logic;
-
-    -- INPUT
-    signal rx_valid : std_logic;
-    signal rx_byte  : std_logic_vector(7 downto 0);
-
-
-    -- ARITHMETIC
-
-
-
-    -- GRAPHING
+    -- GENERAL
     component pll_25M
-        PORT
+        port
         (
             areset		: IN STD_LOGIC  := '0';
             inclk0		: IN STD_LOGIC  := '0'; 
             c0		: OUT STD_LOGIC ;
             locked		: OUT STD_LOGIC 
         );
-    END component;
-
+    end component;
+    
     signal CLOCK_25 : std_logic;
     signal locked : std_logic;
     
+    signal arst : std_logic;
 
+
+
+    -- INPUT
+    signal rx_valid : std_logic;
+    signal rx_byte  : std_logic_vector(7 downto 0);
+
+
+
+    -- ARITHMETIC
+    signal push, pop, full : std_logic;
+    signal s_wr_adr, s_rd_adr : std_logic_vector(2 downto 0) := "000";
+    signal s_din, s_dout : std_logic_vector(17 downto 0);
+
+
+    component stack
+        generic (
+            WIDTH : integer; -- element bit width
+            DEPTH : integer; -- number of stack levels
+            LENGTH: integer  -- 
+          );
+          port (
+              clk     : in std_logic;
+              srst    : in std_logic;
+              
+              push    : in std_logic;
+              pop     : in std_logic;
+              full    : out std_logic;
+    
+              wr_adr  : in std_logic_vector(integer(ceil(log2(real(LENGTH))))-1 downto 0);
+              rd_adr  : in std_logic_vector(integer(ceil(log2(real(LENGTH))))-1 downto 0);
+              din     : in std_logic_vector(WIDTH-1 downto 0);
+              dout    : out std_logic_vector(WIDTH-1 downto 0)  -- data at top of stack
+          );
+    end component;
+
+
+
+    -- GRAPHING
     signal p_din : std_logic;
     signal p_dout : std_logic;
     signal p_wraddr : std_logic_vector(19 downto 0);
@@ -64,14 +93,21 @@ architecture structural of top_graphing_calc is
 
     signal color : rgb;
 begin   
-
+    -- INPUT
     uart0 : uart_rx
         generic map (217)   -- clks per bit for 25Mhz @ 115200baud
         port map (CLOCK_25, UART_IN, rx_valid, rx_byte);
 
 
 
-    -- graphing
+    -- ARITHMETIC
+    data_stack : stack
+        generic map(18, 16, 8)
+        port map(CLOCK_25, arst, push, pop, full, s_wr_adr, s_rd_adr, s_din, s_dout);
+
+
+
+    -- GRAPHING
     pll0 : pll_25M
         port map(arst, CLOCK_50, CLOCK_25, locked);
 

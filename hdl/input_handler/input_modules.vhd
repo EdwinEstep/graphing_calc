@@ -2,7 +2,6 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use work.sreg_types.all;
 
 package input_modules is
     component uart_rx
@@ -14,24 +13,6 @@ package input_modules is
           i_RX_Serial : in  std_logic;
           o_RX_DV     : out std_logic;
           o_RX_Byte   : out std_logic_vector(7 downto 0)
-        );
-    end component;
-
-
-    component shift_reg
-        generic (
-            WIDTH : integer;
-            LENGTH : integer
-        );
-        port (
-              clk      : in std_logic;
-              srst     : in std_logic;
-              ctrl    : in std_logic_vector(1 downto 0);
-              
-              shift_in : in std_logic_vector(WIDTH-1 downto 0);
-      
-              rdy      : out std_logic;
-              q_out    : out vec_array(0 to LENGTH-1)(WIDTH-1 downto 0)
         );
     end component;
 

@@ -3,6 +3,9 @@
 ## Input
 Currently, inputs are not registered in any way. UART can send data, but it will not be received and handled by the system. Need to implement shift register to handle it.
 
+NOTE:
+There are plenty of cycles between each UART 
+
 
 ## ALU
 Everything...
