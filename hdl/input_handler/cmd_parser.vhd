@@ -46,6 +46,7 @@ architecture behavioral of cmd_parser is
   signal cmd_reg_cnt : natural range 0 to 3;
 
 
+  signal fixpt_in : std_logic_vector(4*7-1 downto 0);
   signal fixpt_start : std_logic;
   signal fixpt_done : std_logic;
   signal fixpt_rdy : std_logic;
@@ -54,7 +55,7 @@ architecture behavioral of cmd_parser is
 
   signal cmd_op : op;
 
-  type state_type is (RESET, DATA_ENTRY, NEW_CMD, NEW_NUM, ONECHAR_OP);
+  type state_type is (RESET, DATA_ENTRY, NEW_CMD, NEW_NUM, ONECHAR_OP, WAIT_FIXPT_START, WAIT_FIXPT);
   signal state : state_type;
 begin
   -- store numeric inputs as they come in
@@ -68,7 +69,7 @@ begin
     port map(clk, srst, cmd_reg_ctrl, cmd_reg_in, cmd_reg_rdy, cmd_reg_out, cmd_reg_cnt);
 
   fixpt_converter : dec_to_fixpt
-      port map(clk, srst, fixpt_start, fixpt_done, fixpt_rdy, fixpt_fail, num_reg_vec, fixpt_out);
+      port map(clk, srst, fixpt_start, fixpt_done, fixpt_rdy, fixpt_fail, fixpt_in, fixpt_out);
 
 
 
@@ -80,6 +81,9 @@ begin
         cmd_reg_ctrl <= "11";
         num_reg_ctrl <= "11";
       else
+        fixpt_in <= num_reg_vec;
+        opstart <= '0';
+
         case state is
           when RESET =>
             -- wait til reges have finished resetting
@@ -89,7 +93,6 @@ begin
           when DATA_ENTRY =>
             cmd_reg_ctrl <= "11";
             num_reg_ctrl <= "11";
-            opstart <= '0';
 
             if(rx_dv='1') then -- handle input byte
               if((rx_byte < x"3A" and rx_byte > x"30") or rx_byte = x"2E") then
@@ -125,40 +128,55 @@ begin
           when NEW_CMD => -- don't shift in new values
             state <= DATA_ENTRY;
 
-            if(cmd_reg_cnt < 3) then
+            if(cmd_reg_cnt < 3) then -- is this a cycle slow?
               cmd_reg_ctrl <= "11"; -- no op
 
-              if(num_reg_cnt > 0) then  -- 
-                num_reg_ctrl <= "00"; -- clear the reg
-                opcode <= NUM;    -- opcode to put num on stack
-                data <= fixpt_out;
+              if(num_reg_cnt > 0) then  -- flush out num contents
+                num_reg_ctrl <= "00"; -- clear the reg, BUT store the contents for fixpt
+                state <= WAIT_FIXPT_START;
               end if;
             else
               cmd_reg_ctrl <= "00"; -- clear the reg
-              opstart <= '1';
-              data <= fixpt_out;
 
-              opcode <= cmd_op;
+              -- only start op if it's a valid code
+              if(cmd_op /= NUL) then
+                opstart <= '1';
+                opcode <= cmd_op;
+              end if;
             end if;
 
           when NEW_NUM =>
             state <= DATA_ENTRY;
 
-            if(num_reg_cnt < 7) then
+            if(num_reg_cnt < 7) then -- is this 1 CYCLE SLOW?
               num_reg_ctrl <= "11"; -- no op
             else
-              num_reg_ctrl <= "00"; -- clear the reg
-              opcode <= NUM;    -- opcode to put num on stack
-              data <= fixpt_out;
-              opstart <= '1';
+              if(num_reg_cnt > 0) then  -- flush out num contents
+                num_reg_ctrl <= "00"; -- clear the reg, BUT store the contents for fixpt
+                state <= WAIT_FIXPT_START;
+              end if;
             end if;
 
           when ONECHAR_OP => -- reset signals while transmitting data for one pulse
-            opstart <= '0';
             state <= DATA_ENTRY;
+
+          when WAIT_FIXPT_START =>
+            if(fixpt_rdy='1') then
+              fixpt_start <= '1';
+            end if;
+              
+          -- wait til fixpt converter is done, then send the data.
+          when WAIT_FIXPT =>
+            if(fixpt_done='1' and not fixpt_fail='1') then
+              data <= fixpt_out;
+              opcode <= NUM;
+              opstart <= '1';
+
+              state <= DATA_ENTRY;
+            end if;
+
           when others =>
             state <= RESET;
-            opstart <= '0';
           end case;
       end if;
     end if;
@@ -189,13 +207,13 @@ begin
   vec_to_op : process(cmd_reg_vec)
   begin
     case cmd_reg_vec is
-      when "100"&X"84" => -- ADD
-        opcode <= ADD;
+      when "000"&X"484" => -- ADD
+        cmd_op <= ADD;
       
       -- fill in the rest of the opcodes
         
       when others =>
-        opcode <= NUL;
+      cmd_op <= NUL;
 
     end case;
   end process;

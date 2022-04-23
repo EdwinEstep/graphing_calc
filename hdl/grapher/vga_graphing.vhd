@@ -24,7 +24,7 @@ package vga_graphing is
             
             -- read from alu buffer
             buf_rd_adr  : out std_logic_vector(9 downto 0); -- 10b for 640 entries
-            buf_dout    : out std_logic_vector(17 downto 0);
+            buf_dout    : in std_logic_vector(17 downto 0);
     
             -- write to pixel buffer
             pbuf_wr_adr  : out std_logic_vector(19 downto 0); -- 10b horizontal, 10b vertical

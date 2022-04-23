@@ -111,25 +111,4 @@ begin
 
     vga0 : vga
         port map(CLOCK_25, inv_rst, p_rdaddr, p_dout, VGA_RGB, HSYNC, VSYNC);
-
-    
-    
-
-    -- TEST VGA WITH SIMPLE RASTERIZER REPLACEMENT
-    -- p_we <= '1';
-    -- process(CLOCK_25) begin
-    --     if(CLOCK_25'event and CLOCK_25='1') then
-    --         if(inv_rst='1') then
-    --             p_wraddr <= X"00000";
-    --         else
-    --             p_wraddr <= p_wraddr + "1";
-
-    --             if(p_rdaddr(0)='1')then
-    --             p_din <= p_wraddr(4);
-    --             else
-    --                 p_din <= '0';
-    --             end if;
-    --         end if;
-    --     end if;
-    -- end process;
 end structural;

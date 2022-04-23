@@ -37,6 +37,7 @@ package alu_modules is
               pop     : in std_logic;
               full    : out std_logic;
     
+              wr_en   : in std_logic;
               wr_adr  : in std_logic_vector(integer(ceil(log2(real(LENGTH))))-1 downto 0);
               rd_adr  : in std_logic_vector(integer(ceil(log2(real(LENGTH))))-1 downto 0);
               din     : in std_logic_vector(WIDTH-1 downto 0);

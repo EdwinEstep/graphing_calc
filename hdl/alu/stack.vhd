@@ -8,6 +8,12 @@
 -- need one element per pixel in a 640x480 display.
 -- Total mem usage is 32 M9K elements and 294,912bits.
 
+-- The stack pointer points to the next available level on the stack.
+-- if the stack is empty, sp will point to 0, and the data returned will
+-- always be 0.
+
+-- NOTE that there is 1 extra cycle of delay.
+
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -29,6 +35,7 @@ entity stack is
           pop     : in std_logic;
           full    : out std_logic;
 
+          wr_en   : in std_logic;
           wr_adr  : in std_logic_vector(integer(ceil(log2(real(LENGTH))))-1 downto 0);
           rd_adr  : in std_logic_vector(integer(ceil(log2(real(LENGTH))))-1 downto 0);
           din     : in std_logic_vector(WIDTH-1 downto 0);
@@ -38,6 +45,7 @@ end stack;
 
 
 architecture rtl of stack is
+    -- array of all RAM outputs
     type ram_data    is array(integer range 0 to DEPTH-1) of std_logic_vector(WIDTH-1 downto 0);
 
     signal ram_in  : std_logic_vector(WIDTH-1 downto 0);
@@ -65,12 +73,13 @@ architecture rtl of stack is
 
     signal sp : integer range 0 to 31;
     signal r_full : std_logic;
+    signal r_ram_in : std_logic_vector(WIDTH-1 downto 0);
 begin   
     -- initialize RAM for each layer
     gen_layers: for i in 0 to DEPTH-1 generate
         LAYER: ram_infer
             generic map(WIDTH, LENGTH)
-            port map(clk, ram_in, ram_wr_adr, ram_rd_adr, ram_we(i), ram_out(i));
+            port map(clk, ram_in, wr_adr, rd_adr, ram_we(i), ram_out(i));
     end generate;
 
 
@@ -80,6 +89,12 @@ begin
             if(srst='1') then
                 sp <= 0;
             else
+                -- add extra delay for write enable
+                ram_we(sp) <= wr_en;
+                r_ram_in <= ram_in;
+
+
+
                 if(push='1' and r_full='0') then
                     sp <= sp + 1;
                 elsif(pop='1') then
@@ -91,9 +106,8 @@ begin
 
 
     -- mux signals distribute ram signals
-    ram_wr_adr <= wr_adr;
-    ram_rd_adr <= rd_adr;
-    dout <= ram_out(sp);
+    dout <= ram_out(sp-1) when (sp > 0) else (others => '0');
+
 
     
     process(sp) begin
