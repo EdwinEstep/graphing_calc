@@ -27,7 +27,7 @@ end alu;
 
 
 architecture rtl of alu is
-    type state_type is (START);
+    type state_type is (RESET, WAIT_INPUT, ITERATE, WAIT_1CYC);
     signal state : state_type;
 
     -- signals for stack
@@ -44,13 +44,31 @@ begin
     begin
         if(clk'event and clk='1') then
             if(srst='1') then
+                -- reset signals
                 push <= '0';
                 pop <= '0';
-
                 s_wr_en <= '0';
+
+                -- go to reset state
             else
                 case state is
-                    when START =>
+                    when RESET =>
+                        -- reset output buffer
+
+                    when WAIT_INPUT =>
+                        if(opstart='1') then    
+                            state <= ITERATE;
+                        end if;
+
+                        case opcode is
+                            when ADD => 
+                            when NUM =>
+                            when others =>
+                                
+                        end case;
+                    when ITERATE =>
+
+
                     when others =>
                     
                 end case;
