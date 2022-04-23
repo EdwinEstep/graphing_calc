@@ -1,0 +1,113 @@
+C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/alu/adder.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/alu/adder.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling entity adder
+-- Compiling architecture rtl of adder
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/alu/alu_modules.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/alu/alu_modules.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Loading package sreg_types
+-- Loading package input_modules
+-- Compiling package alu_modules
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/alu/ram_infer.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/alu/ram_infer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Loading package NUMERIC_STD
+-- Compiling entity ram_infer
+-- Compiling architecture rtl of ram_infer
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/alu/fixpt_math.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/alu/fixpt_math.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Compiling package fixpt_math
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/verif/testbenches/tb_dec_to_fixpt.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/verif/testbenches/tb_dec_to_fixpt.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package sreg_types
+-- Loading package input_modules
+-- Compiling entity tb_dec_to_fixpt
+-- Compiling architecture tb of tb_dec_to_fixpt
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/pixel_ram.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/pixel_ram.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity pixel_ram
+-- Compiling architecture rtl of pixel_ram
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga_sync.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity vga_sync
+-- Compiling architecture behavioral of vga_sync
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/verif/testbenches/tb_shift_reg.sv {1 {vlog -work work -sv -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/verif/testbenches/tb_shift_reg.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module tb_shift_reg
+
+Top level modules:
+	tb_shift_reg
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/verif/testbenches/tb_parser.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/verif/testbenches/tb_parser.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package sreg_types
+-- Loading package input_modules
+-- Compiling entity tb_parser
+-- Compiling architecture tb of tb_parser
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/hdl/grapher/vga.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package MATH_REAL
+-- Loading package vga_graphing
+-- Compiling entity vga
+-- Compiling architecture behavioral of vga
+-- Loading entity vga_sync
+
+} {} {}} C:/Users/Edwin/Documents/College/cpe426/graphing_calc/verif/testbenches/vga_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Edwin/Documents/College/cpe426/graphing_calc/verif/testbenches/vga_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package MATH_REAL
+-- Loading package vga_graphing
+-- Compiling entity vga_tb
+-- Compiling architecture tb of vga_tb
+
+} {} {}}
