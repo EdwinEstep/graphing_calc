@@ -4,6 +4,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.math_real.all; -- for ceil, log2, real
 
+use work.input_modules.op;
+
 package alu_modules is
     component ram_infer
         GENERIC (
@@ -49,7 +51,7 @@ package alu_modules is
             
             -- inputs from cmd_parser
             data          : in std_logic_vector(17 downto 0);
-            opcode        : in std_logic_vector(4 downto 0);
+            opcode        : in op;
             opstart       : in std_logic;
 
             -- send to output buffer

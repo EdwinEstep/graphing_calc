@@ -4,6 +4,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
+use work.input_modules.op;
 use work.alu_modules.stack;
 
 entity alu is
@@ -13,7 +14,7 @@ entity alu is
         
         -- inputs from cmd_parser
         data          : in std_logic_vector(17 downto 0);
-        opcode        : in std_logic_vector(4 downto 0);
+        opcode        : in op;
         opstart       : in std_logic;
 
         -- send to output buffer

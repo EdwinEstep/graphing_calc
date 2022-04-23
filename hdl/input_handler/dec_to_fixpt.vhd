@@ -53,7 +53,7 @@ begin
                         fail <= '0';
                         temp <= bcd_in;
 
-                        if(start) then
+                        if(start='1') then
                             state <= CALC;
 
                             -- preempt execution if input is invalid!

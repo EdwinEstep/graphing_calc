@@ -46,7 +46,7 @@ architecture structural of top_graphing_calc is
     signal CLOCK_25 : std_logic;
     signal locked : std_logic;
     
-    signal arst : std_logic;
+    signal inv_rst : std_logic;
 
 
 
@@ -55,7 +55,7 @@ architecture structural of top_graphing_calc is
     signal rx_byte  : std_logic_vector(7 downto 0);
 
     signal input_data : std_logic_vector(17 downto 0);
-    signal opcode : std_logic_vector(4 downto 0);
+    signal opcode : op;
     signal opstart : std_logic;
 
 
@@ -74,25 +74,22 @@ architecture structural of top_graphing_calc is
     signal p_we : std_logic;
 
     signal color : rgb;
-begin   
+begin
+    inv_rst <= not RESET;
+
+
     -- INPUT
     uart0 : uart_rx
         generic map (217)   -- clks per bit for 25Mhz @ 115200baud
         port map (CLOCK_25, UART_IN, rx_valid, rx_byte);
 
     cmd_parser0 : cmd_parser
-        port map (CLOCK_25, arst, rx_valid, rx_byte, input_data, opcode, opstart);
+        port map (CLOCK_25, inv_rst, rx_valid, rx_byte, input_data, opcode, opstart);
         
         
-        
-        
-        
-
-
     -- ARITHMETIC
     alu0 : alu
-        port map(CLOCK_25, arst, input_data, opcode, opstart, buf_wr_adr, buf_din, buf_we);
-
+        port map(CLOCK_25, inv_rst, input_data, opcode, opstart, buf_wr_adr, buf_din, buf_we);
 
     output_buffer : ram_infer
         generic map(18, 640)
@@ -100,32 +97,39 @@ begin
             
 
     -- GRAPHING
+
+    -- should wait for signal to become locked, but it shouldn't matter much,
+    -- since the PLL runs continuously from bootup.
     pll0 : pll_25M
-        port map(arst, CLOCK_50, CLOCK_25, locked);
+        port map(inv_rst, CLOCK_50, CLOCK_25, open);
+
+    rasterizer0 : rasterizer
+        port map(CLOCK_25, inv_rst, buf_rd_adr, buf_dout, p_wraddr, p_din, p_we);
 
     pixel_ram0 : pixel_ram
         port map(CLOCK_25, p_din, p_wraddr, p_rdaddr, p_we, p_dout);
 
     vga0 : vga
-        port map(CLOCK_25, arst, p_rdaddr, p_dout, VGA_RGB, HSYNC, VSYNC);
+        port map(CLOCK_25, inv_rst, p_rdaddr, p_dout, VGA_RGB, HSYNC, VSYNC);
 
     
-    process(CLOCK_25) begin
-        if(CLOCK_25'event and CLOCK_25='1') then
-            if(arst='1') then
-                p_wraddr <= X"00000";
-            else
-                p_wraddr <= p_wraddr + "1";
+    
 
-                if(p_rdaddr(0)='1')then
-                p_din <= p_wraddr(4);
-                else
-                    p_din <= '0';
-                end if;
-            end if;
-        end if;
-    end process;
+    -- TEST VGA WITH SIMPLE RASTERIZER REPLACEMENT
+    -- p_we <= '1';
+    -- process(CLOCK_25) begin
+    --     if(CLOCK_25'event and CLOCK_25='1') then
+    --         if(inv_rst='1') then
+    --             p_wraddr <= X"00000";
+    --         else
+    --             p_wraddr <= p_wraddr + "1";
 
-    p_we <= '1';
-    arst <= not RESET;
+    --             if(p_rdaddr(0)='1')then
+    --             p_din <= p_wraddr(4);
+    --             else
+    --                 p_din <= '0';
+    --             end if;
+    --         end if;
+    --     end if;
+    -- end process;
 end structural;

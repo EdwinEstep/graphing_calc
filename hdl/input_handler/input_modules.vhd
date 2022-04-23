@@ -5,6 +5,9 @@ use ieee.std_logic_1164.all;
 use work.sreg_types.all;        -- shift reg output
 
 package input_modules is
+    type op is (ADD, SUB, MUL, DIV, NUL, XXX, NUM);
+
+
     component uart_rx
         generic (
             g_CLKS_PER_BIT : integer
@@ -36,17 +39,18 @@ package input_modules is
         generic (
             WIDTH : integer := 10;
             LENGTH : integer := 10
-            );
-            port (
-                clk      : in std_logic;
-                srst     : in std_logic;
-                ctrl    : in std_logic_vector(1 downto 0);
-                
-                shift_in : in std_logic_vector(WIDTH-1 downto 0);
-        
-                rdy      : out std_logic;
-                q_out    : out array_2d(0 to LENGTH-1, WIDTH-1 downto 0)
-            );
+          );
+          port (
+              clk      : in std_logic;
+              srst     : in std_logic;
+              ctrl     : in std_logic_vector(1 downto 0);
+              
+              shift_in : in std_logic_vector(WIDTH-1 downto 0);
+      
+              rdy      : out std_logic;
+              q_out    : out array_2d(0 to LENGTH-1, WIDTH-1 downto 0);
+              cnt      : out natural range 0 to LENGTH
+          );
     end component;
 
     component cmd_parser
@@ -58,7 +62,7 @@ package input_modules is
             rx_byte       : in std_logic_vector(7 downto 0); -- uart byte
       
             data          : out std_logic_vector(17 downto 0); -- 18b data for aithmetic module
-            opcode        : out std_logic_vector(4 downto 0);
+            opcode        : out op;
             opstart       : out std_logic
           );
     end component;

@@ -23,12 +23,13 @@ entity shift_reg is
     port (
         clk      : in std_logic;
         srst     : in std_logic;
-        ctrl    : in std_logic_vector(1 downto 0);
+        ctrl     : in std_logic_vector(1 downto 0);
         
         shift_in : in std_logic_vector(WIDTH-1 downto 0);
 
         rdy      : out std_logic;
-        q_out    : out array_2d(0 to LENGTH-1, WIDTH-1 downto 0)
+        q_out    : out array_2d(0 to LENGTH-1, WIDTH-1 downto 0);
+        cnt      : out natural range 0 to LENGTH
     );
 end shift_reg;
 
@@ -82,7 +83,7 @@ begin
 
                                 -- i_reg(i) <= i_reg(i-1);
                                 for k in 0 to WIDTH-1 loop
-                                    i_reg(i, k) <= i_reg(i-1, k);
+                                    i_reg(i, k) <= i_reg(i+1, k);
                                 end loop; -- dumb loop 3
                             end loop;
 
@@ -100,6 +101,8 @@ begin
             end if;
         end if;
     end process;
+
+    cnt <= i_cntr;
 
     q_out <= i_reg;
     rdy <= '1' when state=READY else '0';
